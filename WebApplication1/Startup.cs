@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebApplication1 {
+namespace HelloMVC {
     public class Startup {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services) {
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -15,12 +16,13 @@ namespace WebApplication1 {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSession();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvc(routes => { routes.MapRoute("default", "{controller=home}/{action=index}/{id?}"); });
-            //app.UseMvcWithDefaultRoute() is identiek als hierboven. 
-            //app.Run(async (context) => {
-            //    await context.Response.WriteAsync("Hello World!");
+            app.UseMvc(routes => { routes.MapRoute("default", "{controller=snake}/{action=index}/{id?}"); });
+            //app.usemvcwithdefaultroute() is identiek als hierboven. 
+            //app.run(async (context) => {
+            //    await context.response.writeasync("hello world!");
             //});
         }
     }

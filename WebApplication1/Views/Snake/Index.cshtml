@@ -1,0 +1,23 @@
+﻿@model SnakeEyesGame 
+
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SnakeEyesGame</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Play, play, play, but don't throw the snake eyes...</h1>
+    <span class="snakeEye">@Model.Eye1</span>
+    <span class="SnakeEye">@Model.Eye2</span>
+    <p>Your Total is @Model.Total</p>
+    <form asp-controller="Snake" asp-action="Play" method="post">
+        <input type="submit" name="Value" value="play" />
+</form>
+    
+</body>
+</html>
